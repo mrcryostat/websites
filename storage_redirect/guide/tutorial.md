@@ -35,7 +35,7 @@ In addition, because of the data folder, we can also take these benefits:
 
 ::: details <b>Recommended way to organize files</b>
 
-For user files such as photos, pictures, and downloaded files, the Android system providers a series of standard folders.
+For user files such as photos, pictures, and downloaded files, the Android system provides a series of standard folders.
 
 * `Alarms`
 * `Pictures`
@@ -255,7 +255,7 @@ Assuming ExampleSocial's SDK works like this: save the picture to the `tmp` fold
 
 To ExampleSocial, the `tmp` folder does not exist, so sharing will fail.
 
-To solve this problem, we need to create a "Accessible folder"-"Other application folder" rule.
+To solve this problem, we need to create a "Accessible folder" - "Other application folder" rule.
 
 ```
 Source app: ExampleApp
@@ -269,21 +269,21 @@ So that ExampleSocial can access the `tmp` folder from ExampleApp.
 
 You need to pick up your "weapon", "File monitor". File monitor is a function from "Enhanced mode".
 
-Continuing the above example, after the sharing of ExampleApp to ExampleSocial fails, in File monitor, you will able to find records of `tmp` folder from both ExampleApp and ExampleSocial. This shows that you need to create the rule of accessing the `tmp` folder.
+Continuing the above example, after the sharing of ExampleApp to ExampleSocial fails, in File monitor, you will be able to find records of `tmp` folder from both ExampleApp and ExampleSocial. This shows that you need to create the rule of accessing the `tmp` folder.
 
 #### Use online rules
 
-If there are already required rules in the online rule, you only need to add them directly. You only need to write your own rules when there are no rules or when there are errors of online rule. You can also submit your rules to the online rule library (via the "upload button").
+If there are already required rules in the online rule, you need only to add them directly. You only need to write your own rules when there are no rules or when there are errors of online rule. You can also submit your rules to the online rule library (via the "upload button").
 
 #### Bonus
 
-::: details <b>Involving Xposed modules</b>
+::: details <b>Involving LSposed modules</b>
 
-First of all, you need to know that the Xposed module runs not only as the module apps itself, but also in other applications.
+First of all, you need to know that the LSposed module runs not only as the module apps itself, but also in other applications.
 
-For example, a module named ExampleXposedModule has the function of modifying ExampleApp, it will run in ExampleApp. If ExampleXposedModule saves settings by creating files, ExampleApp also needs to read the saved file. This is the same situation as ExampleApp sharing to ExampleSocial.
+For example, a module named ExampleLSposedModule has the function of modifying ExampleApp, it will run in ExampleApp. If ExampleLSposedModule saves settings by creating files, ExampleApp also needs to read the saved file. This is the same situation as ExampleApp sharing to ExampleSocial.
 
 What you need to do is to use "file monitoring" to monitor which files are used and create corresponding rules.
 
-**However, the most correct approach should be to ask Xposed module developers to make changes!** (Ask module developers to use `ContentProvider` to share the configuration, or directly save the configuration in the data folder of the target app.)
+**However, the most correct approach should be to ask LSposed module developers to make changes!** (Ask module developers to use `ContentProvider` to share the configuration, or directly save the configuration in the data folder of the target app.)
 :::
